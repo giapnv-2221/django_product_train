@@ -1,0 +1,20 @@
+{% extends "products/base.html" %}
+
+{% block title %}Show{% endblock%}
+<h3>Details product</h3>
+{% block content %}
+    <div class="row">
+        <h3>{{product.name}}</h3>
+        <label for="info">Info:</label>
+        <br>
+        <textarea>{{product.info}}</textarea>
+        <br>
+        <p>Price: {{product.price}}</p>
+        <p>Created at: {{product.created_at}}</p>
+    </div>
+
+<div class="row">
+    <p>Action:</p>
+    <a href="{% url 'products:index' %}">back to index</a>
+</div>
+{% endblock %}
