@@ -1,10 +1,9 @@
 {% extends "products/base.html" %}
-
 {% block title %} Products {% endblock %}
-
-<h3>List of products</h3>
-
 {% block content %}
+<h3>List of products</h3>
+<a href="{% url 'products:create' %}">Tạo mới</a>
+
 <table>
     <thead>
     <tr>
@@ -25,9 +24,9 @@
             <td>{{product.created_at}}</td>
             <td>{{product.updated_at}}</td>
             <td>
-                <a href="#">Show</a>
-                <a href="#">Edit</a>
-                <a href="#">Destroy</a>
+                <a href="{% url 'products:show' product.id %}">Show</a>
+                <a href="{% url 'products:update' product.id %}">Edit</a>
+                <a href="{% url 'products:destroy' product.id %}">Destroy</a>
             </td>
         </tr>
     {% endfor %}
