@@ -8,4 +8,6 @@ urlpatterns = [
     url('^create/$', views.create, name='create'),
     url('^(?P<product_id>[0-9]+)/update/$', views.update, name='update'),
     url('^(?P<product_id>[0-9]+)/destroy/$', views.destroy, name='destroy'),
+    url('^category/new$', views.CategoryCreateView.as_view(), name='category'),
+    url('^category/(?P<pk>[0-9]+)/update', views.CategoryUpdateView.as_view(), name='update_category'),
 ]
