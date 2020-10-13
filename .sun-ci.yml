@@ -1,0 +1,40 @@
+workspace: true
+
+stages:
+  - build
+
+jobs:
+  - name: Build django
+    stage: build
+    image: python:3.6.12
+    environment:
+      APP_ENV: testing
+    cache:
+      - key: comopser_vendor_$CI_BRANCH
+        paths:
+          - vendor
+    before_script:
+      - cd shopmall
+      - apt-get update -y
+      - apt-get install sqlite3 -y
+      - python -m pip install git+https://github.com/acrcloud/acrcloud_sdk_python
+      - pip install -r requirement.txt
+    script:
+      - python manage.py collectstatic
+      - python manage.py migrate
+    after_script:
+      - echo "Finish job"
+    only:
+      branches:
+        - master
+      events:
+        - pull_request
+    except:
+      branches:
+        - develop
+      events:
+        - push
+    artifacts:
+      paths:
+        - app/
+      expires_in: 3 days
