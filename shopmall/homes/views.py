@@ -7,7 +7,7 @@ def index(request):
 
 
 def register(request):
-    form = RegisterForm(request.POST or None)
+    form =RegisterForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('homes:index')

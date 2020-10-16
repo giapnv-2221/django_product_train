@@ -1,0 +1,4 @@
+[flake8]
+max-line-length = 119
+select = E,F,W,C90,DJ,DJ10,DJ01,DJ03,DJ07,DJ08,DJ12
+exclude = */migrations/*,node_modules,*/settings/*,*/tests/*,*/venv/*,*/frontend/*
